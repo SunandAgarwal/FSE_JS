@@ -4,7 +4,7 @@ function setColor(set) {
             let userColor = document.getElementById('color').value;
             document.getElementById('myPara').style.color = userColor;
         }
-        
+        return setColor;
 }
 
 window.onload = function() {
