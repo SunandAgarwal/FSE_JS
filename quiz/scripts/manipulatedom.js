@@ -24,8 +24,17 @@ function createTxtNode(txt) {
 function addTable() {
   const tableNode = document.createElement("table");
   for(let i = 0; i < 3; i++) {
-    let col1 = createTDNode(createTxtNode("Cell (" + i + ", 0)"));
-    tableNode.appendChild(createTRNode([col1]));
+    const txtNode = createTxtNode("Cell (" + i + ", 0)");
+    let col1 = createTDNode(txtNode);
+    const btn = document.createElement('button');
+    btn.textContent = 'Edit text';
+    let col2 = createTDNode(btn);
+    btn.addEventListener('click', () => {
+      const inp = document.createElement('input');
+      inp.placeholder = "Edit Cell (" + i + ",0)";
+      col1.replaceChild(inp, txtNode);
+    });
+    tableNode.appendChild(createTRNode([col1, col2]));
   }
   document.getElementById("root").appendChild(tableNode);
 }
